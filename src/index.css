@@ -11,3 +11,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.playable-question-choice:hover {
+  background-color: #e6f9ff;
+  cursor: default;
+}
+
+.incorrect {
+  color: red;
+}
+
+.error {
+  color: red;
+}
+
+.dontAsk {
+  background-color: #ffebe6;
+}
