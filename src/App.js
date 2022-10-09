@@ -8,7 +8,8 @@ import Home from './components/home';
 import PrivateRoute from './components/privateRoute';
 import Tournaments from './components/tournaments';
 import Admin from './components/admin';
-import NewTournament from './components/newTournament';
+import TournamentForm from './components/tournamentForm';
+import TournamentPlayers from './components/tournamentPlayers';
 
 const App = (props) => {
 
@@ -24,7 +25,6 @@ const App = (props) => {
 
   const logoutHandler = () => {
     setAppUser({ loggedIn: false });
-    console.log("User logged out.");
   }
 
   return (
@@ -45,11 +45,19 @@ const App = (props) => {
             />
             <Route
               path="/tournaments/new"
-              element={ <PrivateRoute redirectPath={loginPath} accessRequirement={ isLoggedIn(appUser) } protectedComponent={ <NewTournament /> } /> }
+              element={ <PrivateRoute redirectPath={loginPath} accessRequirement={ isLoggedIn(appUser) } protectedComponent={ <TournamentForm user={ appUser } /> } /> }
+            />
+            <Route 
+              path="/tournaments/:id/edit/players"
+              element={ <PrivateRoute redirectPath={loginPath} accessRequirement={ isLoggedIn(appUser) } protectedComponent={ <TournamentPlayers user={ appUser } /> } /> } 
+            />
+            <Route 
+              path="/tournaments/:id/edit"
+              element={ <PrivateRoute redirectPath={loginPath} accessRequirement={ isLoggedIn(appUser) } protectedComponent={ <TournamentForm user={ appUser } existing={true}/> } /> } 
             />
             <Route 
               path="/tournaments"
-              element={ <PrivateRoute redirectPath={loginPath} accessRequirement={ isLoggedIn(appUser) } protectedComponent={ <Tournaments /> } /> }
+              element={ <PrivateRoute redirectPath={loginPath} accessRequirement={ isLoggedIn(appUser) } protectedComponent={ <Tournaments user={ appUser } /> } /> }
             >
             </Route>
             <Route
