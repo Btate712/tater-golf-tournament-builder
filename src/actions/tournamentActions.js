@@ -1,12 +1,19 @@
-import { tournamentsDummyData } from '../dummyData/tournamentsDummyData';
 import { getAllPlayers } from './playerActions';
 import { SimulatedHttpRequestMs } from '../globalConstants';
 
-const tournamentsFromDatabase = tournamentsDummyData;
+let tournamentsFromDatabase = [];
 
 export const getTournaments = async user => {
-  // ToDo: Add call to API endpoint to get data
-  await new Promise(resolve => setTimeout(resolve, SimulatedHttpRequestMs));
+  const options = {
+    method: 'GET',
+    mode: 'cors',
+    headers: {
+      'Access-Control-Allow-Origin':'*'
+    }
+  }
+  const response = await fetch("https://tater-golf.azurewebsites.net/api/tournaments_tater_golf", options);
+  tournamentsFromDatabase = await response.json();
+  console.log(tournamentsFromDatabase[0]);
   return tournamentsFromDatabase;
 }
 
