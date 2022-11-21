@@ -9,6 +9,7 @@ const TournamentPlayers = ({ user }) => {
   const { id } = useParams();
   const tournamentId = id;
   const [playerData, setPlayerData] = useState(null);
+  const [searchString, setSearchString] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,7 +42,7 @@ const TournamentPlayers = ({ user }) => {
       const { allPlayers, tournamentPlayerIds } = data;
 
       if (tournamentPlayerIds?.length > 0 && allPlayers.length > 0) {
-        players = allPlayers.filter(p => !tournamentPlayerIds.includes(p.id));
+        players = allPlayers.filter(p => !tournamentPlayerIds.includes(p.id) && p.name.toLowerCase().includes(searchString.toLowerCase()));
       }
     }
 
@@ -91,16 +92,19 @@ const TournamentPlayers = ({ user }) => {
     }
     else {
       return (
-        <>
+        <div className='page-with-background'>
           <h2>Registered Players</h2>
           <ul>
             { registeredPlayers(playerData).map(p => <TournamentPlayer player={p} addRemove="Remove" key={`player-${p.id}`} handleClick={ handleRemovePlayer } />) }
           </ul>
-          <h2>Available Players</h2>
+
+          <h2>Add Player</h2>
+          <label>Enter all or part of a player's name to search:</label>
+          <input type='text' onChange={event => setSearchString(event.target.value)}></input>
           <ul>
             { availablePlayers(playerData).map(p => <TournamentPlayer player = {p} addRemove="Add" key={`player-${p.id}`} handleClick={ handleAddPlayer }/>) }
           </ul>
-        </>
+        </div>
       );
     }
   }

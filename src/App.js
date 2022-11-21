@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Navigate, Routes } from 'react-router-dom';
 import Home from './components/home';
 import PrivateRoute from './components/privateRoute';
 import Tournaments from './components/tournaments';
+import Tournament from './components/tournament';
 import Admin from './components/admin';
 import TournamentForm from './components/tournamentForm';
 import TournamentPlayers from './components/tournamentPlayers';
@@ -54,6 +55,10 @@ const App = (props) => {
             <Route 
               path="/tournaments/:id/edit"
               element={ <PrivateRoute redirectPath={loginPath} accessRequirement={ isLoggedIn(appUser) } protectedComponent={ <TournamentForm user={ appUser } existing={true}/> } /> } 
+            />
+            <Route 
+              path="/tournaments/:id"
+              element={ <PrivateRoute redirectPath={loginPath} accessRequirement={ isLoggedIn(appUser) } protectedComponent={ <Tournament user={ appUser } existing={true}/> } /> } 
             />
             <Route 
               path="/tournaments"

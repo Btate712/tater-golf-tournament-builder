@@ -33,9 +33,9 @@ export const SiteTemplateHeader = ({ user, logoutHandler }) => {
   }
 
   return(
-    <div>
-      <nav className="navbar navbar-expand-sm">
-        <ul className="navbar-nav">
+    <div className>
+      <nav className="navbar navbar-expand-sm header">
+        <ul className="navbar-nav header-text">
           {loginOrLogout()}
         </ul>
       </nav>

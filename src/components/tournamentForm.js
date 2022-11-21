@@ -19,6 +19,7 @@ const TournamentForm = ({ user, existing }) => {
     const loadExisting = async () => {
       if (existing) {
         const existingTournament = await getTournament(user, id);
+        existingTournament.formats = ["Handi"];
         setTournament(existingTournament);
       }
     }
@@ -68,7 +69,7 @@ const TournamentForm = ({ user, existing }) => {
   }
 
   return (
-    <>
+    <div className='page-with-background'>
       <h1>{ getHeading() }</h1>
       <form onSubmit={ handleSubmit } className="container">
         <div className="form-group">
@@ -120,7 +121,7 @@ const TournamentForm = ({ user, existing }) => {
             />
         </div>
         <div className="form-group">
-          <label>Formats (Enter as a comma-separated list): </label>
+          <label>Formats (Select one or more, enter all or part of format name to filter): </label>
           <input 
             name="startTime" 
             id="startTime" 
@@ -130,11 +131,23 @@ const TournamentForm = ({ user, existing }) => {
             value={!!tournament?.formats ? tournament.formats.join(", ") : "" } 
             disabled={updating}
             />
+            <h3>Available:</h3>
+            <ul>
+              <li>USGA Handicap</li>
+              <li>Peoria Handicap</li>
+              <li className='red' onClick={() => alert("Match Play is not available since Stroke Play is selected.")}>
+                Click to see formats that are unavailable due to confilcts with selected formats...
+              </li>
+            </ul>
+            <h3>Selected:</h3>
+            <ul>
+              <li>Stroke Play</li>
+            </ul>
         </div>
         <input type="submit" className="btn btn-primary" />
       </form>
       <ConditionalRedirect to="/tournaments" condition={submitted} />
-    </>
+    </div>
   );
 }
 
