@@ -22,8 +22,7 @@ export const createOrUpdateTournament = async (user, tournament) => {
   }
 }
 
-export const getTournament = async (user, tournamentId) => {
-  await new Promise(resolve => setTimeout(resolve, SimulatedHttpRequestMs));
+export const getTournament = (user, tournamentId) => {
   return tournamentsFromDatabase.find(t => t.id == tournamentId);
 }
 

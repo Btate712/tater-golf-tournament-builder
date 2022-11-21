@@ -1,1 +1,85 @@
+h1 {
+  color: rgb(22, 13, 66);
+}
 
+.clickable:hover {
+  cursor: pointer;
+}
+
+.page-with-background ul {
+  color: rgb(22, 13, 66);
+  font-weight: 800;
+}
+
+.page-with-background h2 {
+  color: rgb(22, 13, 66);
+  font-weight: 800;
+}
+
+.page-with-background p {
+  color: rgb(22, 13, 66);
+  font-weight: 800;
+}
+
+.App {
+  background-image: url('./images/grass.jpg');
+  background-position: center;
+  background-size: cover;
+  background-color: rgba(255,255,255,0.6);
+  background-blend-mode: lighten;
+  height: 1000px;
+}
+
+input {
+  background-color: rgb(221, 255, 221);
+}
+
+label {
+  color: rgb(22, 13, 66);
+
+  font-weight: 800;
+}
+
+.header {
+  background-color: lightgreen;
+  height: 40px;
+}
+
+.header-text {
+  color: darkgreen
+}
+
+.home-page-logo {
+  border-radius: 50%;
+  overflow: hidden;
+  width: 280px;
+  height: 280px;
+}
+
+.home-page-logo img {
+  width: 300px;
+  height: 300px;
+  margin: -10px;
+}
+
+.home-page-company-name {
+  color: rgb(42, 70, 1);
+  margin-left: 85px;
+  margin-top: -160px;
+}
+
+.red {
+  color: rgb(169, 20, 20);
+}
+
+.show-page h2 {
+  margin-left: 40px;
+}
+
+.show-page p {
+  margin-left: 40px;
+}
+
+.show-page ul {
+  margin-left: 40px;
+}
